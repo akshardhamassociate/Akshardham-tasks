@@ -268,6 +268,7 @@ table.tl tr.done td{color:var(--mut2)}
 .rem-banner{display:flex;align-items:center;gap:10px;background:var(--r-bg);border:1px solid #f3c0c4;border-radius:12px;padding:11px 14px;font-size:12.5px;color:#a8121f;font-weight:600}
 .rem-banner i{font-size:17px}
 .rem-banner.amber{background:var(--o-bg);border-color:#fde68a;color:#92560a}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 /* carry-forward badge */
 .ttag-carry{background:#ede9fe;color:#6d28d9;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}
 
@@ -374,6 +375,22 @@ table.tl tr.done td{color:var(--mut2)}
 const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbxm5jWK0_rEoad9s-jIHsSsH-f1NquwUxDTXeOC7hstJ54IBgFZIhUoxG5EACWpdNaFzw/exec'};
 const DEMO=!CONFIG.API_URL;
 let U=null,PAGE='',selEmp=''; window._curFeedback=[];
+/* SPEED: batch API — multiple actions in 1 HTTP request to Apps Script */
+async function apiBatch(calls){
+  if(DEMO){
+    // In demo, run all calls in parallel
+    return Promise.all(calls.map(c=>demoApi(c.action,c)));
+  }
+  const res=await fetch(CONFIG.API_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({action:'batch',calls})
+  });
+  const j=await res.json();
+  if(!j.ok) throw new Error(j.error||'Batch API error');
+  return j.data; // array of results
+}
+
 async function api(a,d){ if(DEMO)return demoApi(a,d);
   const r=await fetch(CONFIG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:a},d))});
   const j=await r.json(); if(!j.ok)throw new Error(j.error||'API error'); return j.data; }
@@ -449,16 +466,22 @@ function setBadge(id,n,cls){const el=document.getElementById(id);if(!el)return;i
 
 /*──────── MY DAY ────────*/
 async function pMyDay(){
-  const c=$c(); c.innerHTML='<div class="empty">Loading…</div>';
+  const c=$c();
+  c.innerHTML=`<div style="padding:20px">
+    <div style="height:120px;background:linear-gradient(90deg,#f0f0f0 25%,#fafafa 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:12px;margin-bottom:14px"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="height:200px;background:linear-gradient(90deg,#f0f0f0 25%,#fafafa 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:12px"></div>
+      <div style="height:200px;background:linear-gradient(90deg,#f0f0f0 25%,#fafafa 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:12px"></div>
+    </div></div>`;
   const today=todayStr();
   const isMonday=new Date().getDay()===1;
   // SPEED: parallel API calls
-  const [d, wk, myKpis, kpiToday, kpiWeek] = await Promise.all([
-    api('myday',{date:today,name:U.name}),
-    api('myrange',{name:U.name,from:dateOffset(-6),to:today}),
-    api('kpiGet',{name:U.name}),
-    api('kpiLogGet',{name:U.name,days:1}),
-    api('kpiLogGet',{name:U.name,days:7})
+  const [d, wk, myKpis, kpiToday, kpiWeek] = await apiBatch([
+    {action:'myday',   date:today, name:U.name},
+    {action:'myrange', name:U.name, from:dateOffset(-6), to:today},
+    {action:'kpiGet',  name:U.name},
+    {action:'kpiLogGet', name:U.name, days:1},
+    {action:'kpiLogGet', name:U.name, days:7}
   ]);
   const tasks=d.tasks||[];
   const done=tasks.filter(t=>t.Status==='done').length;
@@ -892,7 +915,7 @@ async function pTimeline(){
   const c=$c();
   if(!window._users){const d=await api('teamrange',{from:dateOffset(-6),to:todayStr()});window._users=d.users.filter(u=>!nm(u.name,U.name));}
   const users=window._users; if(!selEmp&&users[0])selEmp=users[0].name;
-  const [empKpis,kpiHistory]=await Promise.all([api('kpiGet',{name:selEmp}),api('kpiLogGet',{name:selEmp,days:7})]);
+  const [empKpis,kpiHistory]=await apiBatch([{action:'kpiGet',name:selEmp},{action:'kpiLogGet',name:selEmp,days:7}]);
   const kpiGroups={};(empKpis||[]).forEach(k=>{if(!kpiGroups[k.kra])kpiGroups[k.kra]=[];kpiGroups[k.kra].push(k);});
   const hasKpis=empKpis&&empKpis.length>0;
   const sparkData={};[...kpiHistory].reverse().forEach(d=>{Object.keys(d.values||{}).forEach(label=>{if(!sparkData[label])sparkData[label]=[];sparkData[label].push(d.values[label]||0);});});
@@ -1007,7 +1030,7 @@ async function pKraMgr(){
   if(!window._users){const d=await api('teamrange',{from:dateOffset(-6),to:todayStr()});window._users=d.users.filter(u=>!nm(u.name,U.name));}
   const allUsers=[{name:U.name,role:U.role},...(window._users||[])];
   if(!selEmp) selEmp=U.name;
-  const [kras, kpis] = await Promise.all([api('kraGet',{name:selEmp}), api('kpiGet',{name:selEmp})]);
+  const [kras, kpis] = await apiBatch([{action:'kraGet',name:selEmp},{action:'kpiGet',name:selEmp}]);
   // group kpis by kra
   const kpiMap={};
   (kpis||[]).forEach(k=>{ if(!kpiMap[k.kra])kpiMap[k.kra]=[]; kpiMap[k.kra].push(k); });
@@ -1521,9 +1544,9 @@ function stagBanner(stag){
 /* Feature 10: Monthly KPI progress — accumulated daily entries vs monthly target */
 async function pKpiProgress(){
   const c=$c(); c.innerHTML='<div class="empty">Loading…</div>';
-  const [kpis, monthLog] = await Promise.all([
-    api('kpiGet',{name:U.name}),
-    api('kpiLogGet',{name:U.name,days:30})
+  const [kpis, monthLog] = await apiBatch([
+    {action:'kpiGet',name:U.name},
+    {action:'kpiLogGet',name:U.name,days:30}
   ]);
   if(!kpis||!kpis.length){c.innerHTML='<div class="empty">No KPIs set — go to KRA Manager to add KPIs.</div>';return;}
   const totals={};
