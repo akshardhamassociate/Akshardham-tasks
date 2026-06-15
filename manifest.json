@@ -1,6 +1,6 @@
 {
   "name": "Akshardham Tasks",
-  "short_name": "AA Tasks",
+  "short_name": "Akshardham",
   "description": "Daily task tracking and performance intelligence for Akshardham Associates",
   "start_url": "./index.html",
   "display": "standalone",
@@ -75,5 +75,23 @@
   "categories": [
     "business",
     "productivity"
-  ]
+  ],
+  "id": "/Akshardham-tasks/",
+  "screenshots": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Akshardham Tasks \u2014 My Day view"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Akshardham Tasks \u2014 Team Dashboard"
+    }
+  ],
+  "dir": "ltr"
 }
