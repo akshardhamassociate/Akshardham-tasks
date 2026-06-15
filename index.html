@@ -171,7 +171,13 @@ input,textarea,select{font-family:inherit}
 .flag-card.okc{border-left-color:var(--g)}
 
 /* ───── PEOPLE / TIMELINE ───── */
-.people{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.chip-row{position:relative;display:flex;align-items:center;gap:0}
+.chip-scroll{display:flex;gap:8px;overflow-x:auto;padding:4px 2px;flex:1;scroll-behavior:smooth}
+.chip-scroll::-webkit-scrollbar{height:0}
+.chip-arr{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink3);cursor:pointer;transition:.15s;z-index:2}
+.chip-arr:hover{background:var(--br-bg);border-color:var(--br);color:var(--brd)}
+.chip-arr.hidden{opacity:0;pointer-events:none}
+.people{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scroll-behavior:smooth}
 .people::-webkit-scrollbar{height:0}
 .pchip{flex-shrink:0;display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:6px 13px 6px 6px;font-size:12px;font-weight:600;color:var(--ink3)}
 .pchip .pa{width:24px;height:24px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700}
@@ -190,6 +196,27 @@ table.tl tr.done td{color:var(--mut2)}
 .dash{color:#d5d8e2}
 
 .kra-track{height:6px;background:var(--line2);border-radius:3px;overflow:hidden}
+.kra-fill{height:100%;border-radius:3px}
+.kpi-section{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.kpi-group{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+.kpi-group-hd{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#FAFBF8;border-bottom:1px solid var(--line3)}
+.kpi-group-hd .kra-label{font-size:12px;font-weight:700;color:var(--ink2);flex:1}
+.kpi-group-hd .kra-badge{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--br-bg);color:var(--brd)}
+.kpi-row-item{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line3)}
+.kpi-row-item:last-child{border-bottom:none}
+.kpi-row-item .kpi-label{font-size:12.5px;color:var(--ink2);flex:1;font-weight:500}
+.kpi-row-item .kpi-unit{font-size:10.5px;color:var(--mut);min-width:46px}
+.kpi-row-item .kpi-target{font-size:10px;color:var(--mut);white-space:nowrap}
+.kpi-inp{width:70px;border:1.5px solid var(--line2);border-radius:8px;padding:6px 8px;font-size:13px;font-weight:700;text-align:center;background:#FBFCFA;outline:none;transition:.15s}
+.kpi-inp:focus{border-color:var(--br);background:#fff;box-shadow:0 0 0 3px rgba(224,99,24,.10)}
+.kpi-inp.hit{border-color:#22c55e;background:#f0fdf4;color:#15803d}
+.kpi-inp.miss{border-color:#f97316;background:#fff7ed;color:#c2460a}
+.kpi-save-row{padding:9px 14px 12px;display:flex;align-items:center;gap:10px}
+.kpi-save-row span{font-size:11px;color:var(--mut)}
+.spark-wrap{display:flex;align-items:center;gap:8px;min-width:80px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:24px}
+.spark-bar{width:5px;border-radius:2px;background:var(--br);min-height:2px}
+.spark-val{font-size:11px;font-weight:700;color:var(--ink2)}
 .kra-fill{height:100%;border-radius:3px}
 .fb{background:var(--o-bg);border:1px solid #fde68a;border-radius:10px;padding:10px 12px;font-size:12px;margin-bottom:8px}
 .fb b{display:block;font-size:10px;color:var(--o2);margin-bottom:2px}
@@ -241,6 +268,32 @@ table.tl tr.done td{color:var(--mut2)}
 .rem-banner{display:flex;align-items:center;gap:10px;background:var(--r-bg);border:1px solid #f3c0c4;border-radius:12px;padding:11px 14px;font-size:12.5px;color:#a8121f;font-weight:600}
 .rem-banner i{font-size:17px}
 .rem-banner.amber{background:var(--o-bg);border-color:#fde68a;color:#92560a}
+/* carry-forward badge */
+.ttag-carry{background:#ede9fe;color:#6d28d9;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}
+
+.tmpl-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tmpl{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;background:#fff3e8;border:1px solid #f6d9b0;color:var(--brd);font-size:11.5px;font-weight:600;cursor:pointer;transition:.15s;user-select:none}
+.tmpl:hover{background:var(--br-bg);border-color:var(--br)}
+
+.task-wrap{transition:opacity .15s}
+.task-wrap.dragging{opacity:.4}
+.task-wrap.drag-over{border-top:2.5px solid var(--br)}
+.cmt-thread{margin:0 0 8px 27px;display:flex;flex-direction:column;gap:4px}
+.cmt{background:#f7f8fc;border:1px solid var(--line2);border-radius:8px;padding:7px 10px;font-size:12px}
+.cmt-who{font-size:9.5px;font-weight:700;color:var(--brd);margin-bottom:2px}
+.cmt-inp-row{display:flex;gap:6px;margin:5px 0 9px 27px}
+.cmt-inp{flex:1;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;background:#fbfcfe;outline:none}
+.cmt-inp:focus{border-color:var(--br)}
+.pwa-bar{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#fff8ef,#fffdf4);border:1px solid var(--br-bd);border-radius:12px;padding:11px 14px;font-size:12.5px;margin-bottom:0}
+.pwa-bar i{font-size:16px;color:var(--brd)}
+.stag-flag{display:flex;align-items:center;gap:8px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:9px 12px;font-size:12px;color:#991b1b;margin-bottom:8px}
+.mkpi-card{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:10px 13px;margin-bottom:7px}
+.mkpi-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.mkpi-lbl{font-size:12px;font-weight:600;color:var(--ink2)}
+.mkpi-pct{font-size:12px;font-weight:700}
+.mkpi-bar{height:5px;background:var(--line2);border-radius:3px;overflow:hidden;margin-bottom:3px}
+.mkpi-fill{height:100%;border-radius:3px}
+.mkpi-foot{font-size:10.5px;color:var(--mut)}
 
 @media(max-width:920px){
   .sidebar{transform:translateX(-100%);box-shadow:0 20px 60px rgba(0,0,0,.18)}
@@ -300,7 +353,8 @@ table.tl tr.done td{color:var(--mut2)}
       <div><div class="tb-title" id="pTitle">My Day</div><div class="tb-sub" id="pSub"></div></div>
       <div class="tb-actions" id="pActions"></div>
     </div>
-    <div class="content" id="content"></div>
+    <div id="pwaBanner" class="pwa-bar" style="display:none;margin:12px 20px 0"><i class="ti ti-device-mobile"></i><div style="flex:1"><b>Install as App</b> — add to home screen for quick access &amp; offline reminders.</div><button class="btn-sm" onclick="installPwa()" style="white-space:nowrap"><i class="ti ti-download"></i> Install</button><button class="btn-out" style="padding:5px 9px" onclick="hidePwaBanner()"><i class="ti ti-x"></i></button></div>
+<div class="content" id="content"></div>
   </div>
 </div>
 <div id="toast"></div>
@@ -317,9 +371,9 @@ table.tl tr.done td{color:var(--mut2)}
 </div>
 
 <script>
-const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbw-_5jqaI84ykQoR95D_2cJIsLDz3nbh-x8vPgET9-IcUzcJYCDKhjTguZqpzeoYHL1Cg/exec'};
+const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbxm5jWK0_rEoad9s-jIHsSsH-f1NquwUxDTXeOC7hstJ54IBgFZIhUoxG5EACWpdNaFzw/exec'};
 const DEMO=!CONFIG.API_URL;
-let U=null,PAGE='',selEmp='';
+let U=null,PAGE='',selEmp=''; window._curFeedback=[];
 async function api(a,d){ if(DEMO)return demoApi(a,d);
   const r=await fetch(CONFIG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action:a},d))});
   const j=await r.json(); if(!j.ok)throw new Error(j.error||'API error'); return j.data; }
@@ -329,6 +383,7 @@ const NAV=[
   {grp:'Workspace'},
   {id:'myday',ic:'ti-layout-dashboard',l:'My Day',t:'My Day'},
   {id:'kra',ic:'ti-target',l:'My KRA / KPI',t:'My KRA / KPI'},
+  {id:'mkpi',ic:'ti-chart-donut-2',l:'Monthly Progress',t:'Monthly KPI Progress'},
   {id:'history',ic:'ti-history',l:'My History',t:'My History'},
   {grp:'Team',admin:1},
   {id:'teamdash',ic:'ti-chart-bar',l:'Team Dashboard',t:'Team Dashboard',admin:1,badge:'tdBadge'},
@@ -358,10 +413,10 @@ function go(id){
   document.getElementById('pSub').textContent=new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
   document.getElementById('pActions').innerHTML='';
   closeSide(); document.querySelector('.content').scrollTop=0; window.scrollTo(0,0);
-  render(id);
+  render(id); setTimeout(wrapChips,80);
 }
 function render(id){try{
-  if(id==='myday')return pMyDay(); if(id==='kra')return pKra(); if(id==='history')return pHistory();
+  if(id==='myday')return pMyDay(); if(id==='kra')return pKra(); if(id==='history')return pHistory(); if(id==='mkpi')return pKpiProgress();
   if(id==='teamdash')return pTeam(); if(id==='timeline')return pTimeline(); if(id==='bucket')return pBucket(); if(id==='kramgr')return pKraMgr(); if(id==='members')return pMembers();
   if(id==='ai')return pAI(); if(id==='flags')return pFlags(); if(id==='profile')return pProfile();
 }catch(e){toast('❌ '+e.message);}}
@@ -396,8 +451,15 @@ function setBadge(id,n,cls){const el=document.getElementById(id);if(!el)return;i
 async function pMyDay(){
   const c=$c(); c.innerHTML='<div class="empty">Loading…</div>';
   const today=todayStr();
-  const d=await api('myday',{date:today,name:U.name});
-  const wk=await api('myrange',{name:U.name,from:dateOffset(-6),to:today});
+  const isMonday=new Date().getDay()===1;
+  // SPEED: parallel API calls
+  const [d, wk, myKpis, kpiToday, kpiWeek] = await Promise.all([
+    api('myday',{date:today,name:U.name}),
+    api('myrange',{name:U.name,from:dateOffset(-6),to:today}),
+    api('kpiGet',{name:U.name}),
+    api('kpiLogGet',{name:U.name,days:1}),
+    api('kpiLogGet',{name:U.name,days:7})
+  ]);
   const tasks=d.tasks||[];
   const done=tasks.filter(t=>t.Status==='done').length;
   const pend=tasks.length-done;
@@ -406,9 +468,33 @@ async function pMyDay(){
   const reported=tasks.filter(t=>t.Report).length;
   const listed=tasks.filter(t=>t.Type!=='assigned'), assigned=tasks.filter(t=>t.Type==='assigned');
   const fb=d.feedback||[];
+  window._curFeedback=fb;
+  const todayKpiVals=(kpiToday[0]||{}).values||{};
+  // group KPIs by KRA
+  const kpiGroups={};
+  (myKpis||[]).forEach(k=>{
+    if(!kpiGroups[k.kra]) kpiGroups[k.kra]=[];
+    kpiGroups[k.kra].push(k);
+  });
+  const hasKpis=myKpis&&myKpis.length>0;
+
+  // weekly KPI summary: sum each KPI over last 7 days
+  const weeklyTotals={};
+  (kpiWeek||[]).forEach(function(day){
+    Object.keys(day.values||{}).forEach(function(lbl){
+      weeklyTotals[lbl]=(weeklyTotals[lbl]||0)+(+day.values[lbl]||0);
+    });
+  });
+  const weeklyCard=hasKpis?weeklyKpiCard(myKpis,weeklyTotals):'';
+
+  // carried tasks (from past with NextDate=today)
+  const carriedTasks=tasks.filter(t=>t._carried);
+  const selfTasks=tasks.filter(t=>!t._carried);
   document.getElementById('pActions').innerHTML=`<button class="btn-out" onclick="go('history')"><i class="ti ti-history"></i> History</button><button class="btn-ai" onclick="document.getElementById('tin').focus()"><i class="ti ti-plus"></i> Add Task</button>`;
   c.innerHTML=`
     ${reminderBanner(tasks,d.midday)}
+    ${stagBanner(detectStagnation(wk.tasks.filter(function(t){return nm(t.Name,U.name);})))}
+    ${weeklyCard}
     <div class="kpi-row">
       <div class="kpi k1"><div class="kpi-icon i1"><i class="ti ti-circle-check"></i></div><div class="kpi-num">${done}/${tasks.length||0}</div><div class="kpi-lbl">Tasks Done</div><div class="kpi-delta ${pend?'neu':'up'}">${pend?pend+' remaining':'All clear ✓'}</div></div>
       <div class="kpi k2"><div class="kpi-icon i2"><i class="ti ti-clipboard-text"></i></div><div class="kpi-num">${reported}/${tasks.length||0}</div><div class="kpi-lbl">Reports Filed</div><div class="kpi-delta neu">File before EOD</div></div>
@@ -419,8 +505,12 @@ async function pMyDay(){
       <div class="card">
         <div class="card-head"><div class="ch-t"><i class="ti ti-checklist"></i> Today's Tasks</div><span class="ch-b">${done} / ${tasks.length} Done</span></div>
         <div class="card-body">
+          ${tmplHtml(U.name,U.role)}
           <div class="addbar" style="margin-bottom:10px"><input id="tin" placeholder="Write a new task…" onkeydown="if(event.key==='Enter')addTask()"><button class="btn-sm" onclick="addTask()"><i class="ti ti-plus"></i> Add</button></div>
-          <div id="tlist">${tasks.length?tasks.map(taskRow).join(''):'<div class="empty">No tasks yet — add your first task above</div>'}</div>
+          <div id="tlist">
+            ${carriedTasks.length?`<div style="font-size:10px;font-weight:700;color:#6d28d9;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">🔁 Carried forward (${carriedTasks.length})</div>${carriedTasks.map(taskRow).join('')}<div style="border-top:1px dashed var(--line2);margin:8px 0 6px"></div>`:''}
+            ${selfTasks.length?selfTasks.map(taskRow).join(''):'<div class="empty">No tasks yet — add your first task above</div>'}
+          </div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
@@ -431,15 +521,118 @@ async function pMyDay(){
             <button class="btn-sm" onclick="saveMidday()"><i class="ti ti-device-floppy"></i> Save update</button>
           </div>
         </div>
+        ${hasKpis?`
         <div class="card">
-          <div class="card-head"><div class="ch-t"><i class="ti ti-target"></i> My KRA / KPI</div></div>
-          <div class="card-body">${(U.kras||[]).map(k=>`<div class="task-item"><i class="ti ti-point" style="color:var(--g);font-size:14px;margin-top:2px"></i><div class="t-txt">${esc(k)}</div></div>`).join('')||'<div class="empty">No KRAs set</div>'}</div>
-        </div>
+          <div class="card-head"><div class="ch-t"><i class="ti ti-chart-bar"></i> Daily KPIs</div><span style="font-size:10.5px;color:var(--mut)">Enter today's numbers</span></div>
+          <div id="kpiEntryBody">
+            ${Object.keys(kpiGroups).map(kra=>`
+              <div class="kpi-group-hd">
+                <i class="ti ti-target" style="font-size:13px;color:var(--brd)"></i>
+                <span class="kra-label">${esc(kra)}</span>
+              </div>
+              ${kpiGroups[kra].map(k=>{
+                const val=todayKpiVals[k.label]!==undefined?todayKpiVals[k.label]:'';
+                const cls=val!==''?(+val>=(k.target||0)?'hit':'miss'):'';
+                return `<div class="kpi-row-item">
+                  <span class="kpi-label">${esc(k.label)}</span>
+                  <span class="kpi-unit">${esc(k.unit)}</span>
+                  <span class="kpi-target">Target: ${k.target||'—'}</span>
+                  <input class="kpi-inp ${cls}" id="kpi-${esc(k.label).replace(/\s+/g,'_')}"
+                    type="number" min="0" value="${val}" placeholder="0"
+                    oninput="kpiColorCheck(this,${k.target||0})"
+                    onchange="kpiColorCheck(this,${k.target||0})">
+                </div>`;
+              }).join('')}`).join('')}
+            <div class="kpi-save-row">
+              <button class="btn-sm" onclick="saveKpis()"><i class="ti ti-device-floppy"></i> Save KPIs</button>
+              <span>Numbers auto-color: 🟢 on/above target · 🟠 below</span>
+            </div>
+          </div>
+        </div>`:''}
         ${fb.length?`<div class="card"><div class="card-head"><div class="ch-t"><i class="ti ti-message-2"></i> Feedback</div></div><div class="card-body">${fb.map(f=>`<div class="fb"><b>${esc(f.By||'Senior')}</b>${esc(f.Feedback)}</div>`).join('')}</div></div>`:''}
         <div class="ai-box"><div class="ai-ico"><i class="ti ti-sparkles"></i></div><div><div class="ai-title">AI Insight</div><div class="ai-body" id="aiTip">${dayTip(tasks,kraPct)}</div></div></div>
       </div>
     </div>`;
+  setTimeout(enableDrag,60);
 }
+function kpiColorCheck(inp,target){
+  inp.classList.remove('hit','miss');
+  if(inp.value!==''&&target>0) inp.classList.add(+inp.value>=target?'hit':'miss');
+}
+async function saveKpis(){
+  const values={};
+  document.querySelectorAll('.kpi-inp').forEach(inp=>{
+    if(inp.value!==''){
+      const label=inp.id.replace('kpi-','').replace(/_/g,' ');
+      values[label]=+inp.value;
+    }
+  });
+  if(!Object.keys(values).length){toast('Enter at least one number');return;}
+  await api('kpiLog',{name:U.name,date:todayStr(),values});
+  toast('✅ KPIs saved for today');
+}
+/* Task Templates */
+const DEFAULT_TEMPLATES={
+  Telecaller:['85 calls done','Handed 6 hot leads to sales','CRM follow-ups updated'],
+  Sales:['2 site visits done','Called 10 follow-up customers','Sent site layout to leads'],
+  'Digital Marketing':['Posted 3 reels','Ran ₹500 ad boost','Tracked 10 enquiries'],
+  Accounts:['Recorded 3 receipts','Chased 2 pending payments','Day closing done'],
+  Trainer:['Conducted module 3 session','Onboarded 1 new agent','Tracked module completion'],
+  Operations:['Registry office follow-up done','Called vendor','Site issue resolved'],
+  'Field Sales':['Visited 5 shops','Collected 3 Mitra Dukan forms','Arranged 2 site visits'],
+  Tech:['Fixed portal bug','Deployed automation','Cleaned data hygiene issues'],
+};
+function tmplHtml(name,role){
+  const stored=JSON.parse(localStorage.getItem('tmpl_'+name)||'null');
+  const list=stored||(DEFAULT_TEMPLATES[role]||[]);
+  if(!list.length) return '';
+  return '<div class="tmpl-row">'+
+    list.map(function(t){return '<button class="tmpl" onclick="useTemplate(\''+t.replace(/'/g,"\\'")+'\')" title="Click to use">'+esc(t)+'</button>';}).join('')+
+    '<button class="tmpl" style="background:#f7f8fc;border-color:var(--line);color:var(--mut)" onclick="editTemplates()" title="Edit templates"><i class="ti ti-settings" style="font-size:13px"></i></button>'+
+    '</div>';
+}
+function useTemplate(text){
+  document.getElementById('tin').value=text;
+  document.getElementById('tin').focus();
+}
+function editTemplates(){
+  const stored=JSON.parse(localStorage.getItem('tmpl_'+U.name)||'null');
+  const cur=(stored||(DEFAULT_TEMPLATES[U.role]||[])).join('\n');
+  const nw=prompt('Edit your task templates (one per line):',cur);
+  if(nw===null) return;
+  const arr=nw.split('\n').map(s=>s.trim()).filter(Boolean);
+  localStorage.setItem('tmpl_'+U.name,JSON.stringify(arr));
+  toast('✅ Templates saved'); pMyDay();
+}
+
+function weeklyKpiCard(kpis,totals){
+  const isMonday=new Date().getDay()===1;
+  // Show on Monday prominently, or as a collapsible on other days
+  const lastMon=dateOffset(-(new Date().getDay()||7)+1); // previous Monday
+  const items=kpis.map(function(k){
+    const actual=totals[k.label]||0;
+    const weeklyTarget=(k.target||0)*7;
+    const pct=weeklyTarget>0?Math.min(100,Math.round(actual/weeklyTarget*100)):0;
+    const ok=weeklyTarget>0?actual>=weeklyTarget:actual>0;
+    return '<div style="background:#fff;border:1px solid var(--line2);border-radius:10px;padding:10px 12px;min-width:140px">'+
+      '<div style="font-size:10.5px;color:var(--mut);margin-bottom:4px">'+esc(k.label)+'</div>'+
+      '<div style="display:flex;align-items:baseline;gap:5px">'+
+        '<span style="font-size:19px;font-weight:700;color:'+(ok?'#15803d':'#c2460a')+'">'+actual+'</span>'+
+        '<span style="font-size:11px;color:var(--mut)">/ '+(weeklyTarget||k.target)+' '+esc(k.unit)+'</span>'+
+      '</div>'+
+      '<div style="height:4px;background:var(--line2);border-radius:2px;margin-top:6px;overflow:hidden">'+
+        '<div style="height:100%;border-radius:2px;width:'+pct+'%;background:'+(ok?'#22c55e':'#f97316')+'"></div>'+
+      '</div>'+
+      '<div style="font-size:9.5px;color:var(--mut);margin-top:3px">'+pct+'% of weekly target</div>'+
+    '</div>';
+  }).join('');
+  if(!items) return '';
+  return '<div class="card" style="border-color:'+(isMonday?'var(--br)':'var(--line)')+'">'+
+    '<div class="card-head"><div class="ch-t"><i class="ti ti-calendar-week" style="color:var(--brd)"></i> Weekly KPI Summary</div>'+
+    '<span style="font-size:10.5px;color:var(--mut)">Last 7 days vs target</span></div>'+
+    '<div class="card-body"><div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px">'+items+'</div></div></div>';
+}
+
 function dayTip(tasks,kraPct){
   const noRep=tasks.filter(t=>t.Status!=='done'&&!t.Report).length;
   if(!tasks.length)return 'The day starts with your task list. <strong>Add your first task now</strong> — before 11 AM.';
@@ -449,11 +642,13 @@ function dayTip(tasks,kraPct){
 }
 function taskRow(t){
   const done=t.Status==='done', open=(t.Report||t.NextAction);
+  const carried=t._carried; const fromDate=t._fromDate;
   return `<div class="task-wrap ${open?'open':''}" id="tw-${t.TaskID}">
     <div class="task-item">
       <div class="chk ${done?'done':''}" onclick="toggle('${t.TaskID}',this)"></div>
       <div class="t-txt ${done?'done':''}" id="txt-${t.TaskID}" onclick="toggleRep('${t.TaskID}')">${esc(t.Task)}
-        <div class="t-sub">${t.Type==='assigned'?'📌 Assigned by '+esc(t.AssignedBy||'senior'):'Self listed'}${t.Report?' · report ✓':''}</div></div>
+        <div class="t-sub">${carried?'🔁 Carried from '+niceDate(fromDate):t.Type==='assigned'?'📌 Assigned by '+esc(t.AssignedBy||'senior'):'Self listed'}${t.Report?' · report ✓':''}</div></div>
+      ${carried?`<span class="ttag-carry">Carried</span>`:''}
       ${t.Aligned==='YES'?`<span class="ttag tg-kra">KRA ${t.Score}/5</span>`:t.Aligned==='NO'?'<span class="ttag tg-off">Off-KRA</span>':`<span class="ttag tg-chk" id="chk-${t.TaskID}">AI…</span>`}
       ${done?'':'<span class="ttag tg-pend">Pending</span>'}
       <span class="t-exp" onclick="toggleRep('${t.TaskID}')"><i class="ti ti-chevron-down"></i></span>
@@ -470,6 +665,7 @@ function taskRow(t){
         <input type="date" id="nd-${t.TaskID}" value="${esc(t.NextDate||'')}">
       </div>
       <button class="btn-sm" onclick="saveRep('${t.TaskID}')"><i class="ti ti-device-floppy"></i> Save report</button>
+      ${(()=>{const cmts=(_curFeedback||[]).filter(f=>f.TaskRef&&f.TaskRef.toLowerCase()===t.Task.toLowerCase().slice(0,30).toLowerCase());return cmts.length?'<div style="margin-top:9px;border-top:1px solid var(--line3);padding-top:8px"><div style="font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;margin-bottom:5px">Comments</div>'+cmts.map(f=>'<div class="cmt"><div class="cmt-who">'+esc(f.By)+'</div>'+esc(f.Feedback)+'</div>').join('')+'</div>':''})()}
     </div></div>`;
 }
 async function saveMidday(){
@@ -521,6 +717,39 @@ function reminderBanner(tasks,midday){
   if(hm>=14*60 && !midday) return '<div class="rem-banner amber"><i class="ti ti-clock-hour-2"></i> Mid-day update not filed yet — add 2-3 lines.</div>';
   return '';
 }
+/* ── Chip row scroll arrows ── */
+function wrapChips(id){
+  // wraps a .people div (by parent id or selector) with ← → arrow buttons
+  const rows=id?document.querySelectorAll('#'+id+' .people'):document.querySelectorAll('.people');
+  rows.forEach(function(el){
+    if(el.parentElement.classList.contains('chip-row'))return; // already wrapped
+    const wrap=document.createElement('div'); wrap.className='chip-row';
+    el.parentNode.insertBefore(wrap,el);
+    const lbtn=document.createElement('button'); lbtn.className='chip-arr hidden'; lbtn.innerHTML='<i class="ti ti-chevron-left"></i>'; lbtn.onclick=function(){el.scrollBy({left:-180,behavior:'smooth'});};
+    const rbtn=document.createElement('button'); rbtn.className='chip-arr'; rbtn.innerHTML='<i class="ti ti-chevron-right"></i>'; rbtn.onclick=function(){el.scrollBy({left:180,behavior:'smooth'});};
+    wrap.appendChild(lbtn); wrap.appendChild(el); wrap.appendChild(rbtn);
+    function upd(){
+      lbtn.classList.toggle('hidden',el.scrollLeft<8);
+      rbtn.classList.toggle('hidden',el.scrollLeft+el.clientWidth>=el.scrollWidth-8);
+    }
+    el.addEventListener('scroll',upd); upd();
+    // also wrap .dfil (dashboard filter chips)
+  });
+  // Also wrap .dfil rows
+  const frws=id?document.querySelectorAll('#'+id+' .dfil'):document.querySelectorAll('.dfil');
+  frws.forEach(function(el){
+    if(el.parentElement.classList.contains('chip-row'))return;
+    el.style.flexWrap='nowrap'; el.style.overflowX='auto';
+    el.classList.add('chip-scroll');
+    const wrap=document.createElement('div'); wrap.className='chip-row';
+    el.parentNode.insertBefore(wrap,el);
+    const lbtn=document.createElement('button'); lbtn.className='chip-arr hidden'; lbtn.innerHTML='<i class="ti ti-chevron-left"></i>'; lbtn.onclick=function(){el.scrollBy({left:-180,behavior:'smooth'});};
+    const rbtn=document.createElement('button'); rbtn.className='chip-arr'; rbtn.innerHTML='<i class="ti ti-chevron-right"></i>'; rbtn.onclick=function(){el.scrollBy({left:180,behavior:'smooth'});};
+    wrap.appendChild(lbtn); wrap.appendChild(el); wrap.appendChild(rbtn);
+    function upd(){lbtn.classList.toggle('hidden',el.scrollLeft<8);rbtn.classList.toggle('hidden',el.scrollLeft+el.clientWidth>=el.scrollWidth-8);}
+    el.addEventListener('scroll',upd); setTimeout(upd,100);
+  });
+}
 function toggleRep(id){document.getElementById('tw-'+id).classList.toggle('open');}
 function nxtShow(id,s){document.getElementById('nxt-'+id).classList.toggle('show',s);}
 async function addTask(){
@@ -528,7 +757,7 @@ async function addTask(){
   const t=await api('addtask',{date:todayStr(),name:U.name,role:U.role,task:v});
   await pMyDay();
   try{const r=await api('align',{taskId:t.TaskID,task:v,name:U.name,role:U.role});const el=document.getElementById('chk-'+t.TaskID);if(el){el.className='ttag '+(r.aligned?'tg-kra':'tg-off');el.textContent=r.aligned?'KRA '+r.score+'/5':'Off-KRA';}}catch(e){}
-  toast('✅ Task added');
+  toast('✅ Task added'); setTimeout(enableDrag,50);
 }
 async function toggle(id,el){const done=!el.classList.contains('done');el.classList.toggle('done',done);document.getElementById('txt-'+id).classList.toggle('done',done);await api('toggle',{taskId:id,status:done?'done':'open'});}
 async function saveRep(id){
@@ -553,35 +782,49 @@ async function pKra(){
 
 /*──────── HISTORY (employee — admin jaisa table) ────────*/
 async function pHistory(){
-  const c=$c();
+  const c=$c(); histDateFilter='';
   c.innerHTML=`
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-calendar-week"></i> My last 14 days</div><label class="tgl"><input type="checkbox" id="hpend" onchange="loadHist()"> Pending only</label></div>
-      <div class="tl-wrap" id="histb"></div>
+      <div class="card-head" style="flex-wrap:wrap;gap:8px">
+        <div class="ch-t"><i class="ti ti-calendar-week"></i> My last 14 days</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:5px">
+            <i class="ti ti-calendar" style="font-size:13px;color:var(--brd)"></i>
+            <input type="date" id="hdatefilter" class="inp" style="padding:5px 9px;font-size:12px;max-width:148px" title="Jump to a specific date" onchange="histDateFilter=this.value;loadHist()">
+            <button class="btn-out" style="padding:5px 8px;font-size:11px" onclick="histDateFilter='';document.getElementById('hdatefilter').value='';loadHist()" title="Clear date filter"><i class="ti ti-x"></i></button>
+          </div>
+          <label class="tgl"><input type="checkbox" id="hpend" onchange="loadHist()"> Pending only</label>
+        </div>
+      </div>
+      <div class="tl-wrap" id="histb"><div class="empty" style="padding:20px">Loading…</div></div>
     </div>`;
   loadHist();
 }
 async function loadHist(){
   const b=document.getElementById('histb'); if(!b)return;
-  const pend=document.getElementById('hpend').checked;
-  const m=await api('myrange',{name:U.name,from:dateOffset(-13),to:todayStr()});
+  const pend=document.getElementById('hpend')&&document.getElementById('hpend').checked;
+  const from=histDateFilter||dateOffset(-13);
+  const to=histDateFilter||todayStr();
+  const m=await api('myrange',{name:U.name,from,to});
   let tasks=(m.tasks||[]).slice(); if(pend)tasks=tasks.filter(t=>t.Status!=='done');
   const byd={};tasks.forEach(t=>{(byd[t.Date]=byd[t.Date]||[]).push(t)});
   const dates=Object.keys(byd).sort().reverse();
-  if(!dates.length){b.innerHTML='<div class="empty">'+(pend?'No pending tasks 🎉':'No history yet.')+'</div>';return;}
+  if(!dates.length){b.innerHTML='<div class="empty">'+(histDateFilter?'No tasks on '+niceDate(histDateFilter)+'.':pend?'No pending tasks 🎉':'No history yet.')+'</div>';return;}
   let rows='';
-  dates.forEach(d=>{rows+=`<tr class="dh-row"><td colspan="6">${niceDate(d)}</td></tr>`;
-    byd[d].forEach(t=>{const done=t.Status==='done';
+  dates.forEach(function(d){
+    rows+=`<tr class="dh-row"><td colspan="6">${niceDate(d)}</td></tr>`;
+    byd[d].forEach(function(t){const done=t.Status==='done';
       rows+=`<tr class="${done?'done':''}">
         <td><span class="ttag ${t.Type==='assigned'?'tg-asg':'tg-chk'}">${t.Type==='assigned'?'by '+esc(t.AssignedBy||'senior'):'self'}</span></td>
-        <td style="font-weight:600;color:var(--ink);max-width:230px">${esc(t.Task)}${t.Aligned==='YES'?` <span class="ttag tg-kra">KRA ${t.Score}/5</span>`:t.Aligned==='NO'?' <span class="ttag tg-off">off-KRA</span>':''}</td>
+        <td style="font-weight:600;color:var(--ink);max-width:220px">${esc(t.Task)}${t.Aligned==='YES'?` <span class="ttag tg-kra">KRA ${t.Score}/5</span>`:t.Aligned==='NO'?' <span class="ttag tg-off">off-KRA</span>':''}</td>
         <td><span class="stag ${done?'st-ok':'st-p'}">${done?'Done':'Pending'}</span></td>
-        <td style="max-width:190px">${t.Report?esc(t.Report):'<span class="dash">—</span>'}</td>
-        <td style="max-width:170px">${t.NextAction?esc(t.NextAction):'<span class="dash">—</span>'}</td>
+        <td style="max-width:180px">${t.Report?esc(t.Report):'<span class="dash">—</span>'}</td>
+        <td style="max-width:160px">${t.NextAction?esc(t.NextAction):'<span class="dash">—</span>'}</td>
         <td style="white-space:nowrap">${t.NextDate?niceDate(t.NextDate):'<span class="dash">—</span>'}</td></tr>`;});
   });
   b.innerHTML=`<table class="tl"><thead><tr><th>Type</th><th>Task</th><th>Status</th><th>Report</th><th>Next Action</th><th>Next Date</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
+let histDateFilter='';
 
 /*──────── TEAM DASHBOARD ────────*/
 let dashSel=null; // null = all
@@ -649,18 +892,23 @@ async function pTimeline(){
   const c=$c();
   if(!window._users){const d=await api('teamrange',{from:dateOffset(-6),to:todayStr()});window._users=d.users.filter(u=>!nm(u.name,U.name));}
   const users=window._users; if(!selEmp&&users[0])selEmp=users[0].name;
+  const [empKpis,kpiHistory]=await Promise.all([api('kpiGet',{name:selEmp}),api('kpiLogGet',{name:selEmp,days:7})]);
+  const kpiGroups={};(empKpis||[]).forEach(k=>{if(!kpiGroups[k.kra])kpiGroups[k.kra]=[];kpiGroups[k.kra].push(k);});
+  const hasKpis=empKpis&&empKpis.length>0;
+  const sparkData={};[...kpiHistory].reverse().forEach(d=>{Object.keys(d.values||{}).forEach(label=>{if(!sparkData[label])sparkData[label]=[];sparkData[label].push(d.values[label]||0);});});
   c.innerHTML=`
     <div class="people">${users.map(u=>`<button class="pchip ${nm(u.name,selEmp)?'on':''}" onclick="selEmp='${esc(u.name)}';pTimeline()"><span class="pa">${initials(u.name)}</span>${esc(u.name)}</button>`).join('')}</div>
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-pin"></i> ${esc(selEmp)} — assign a task</div></div>
-      <div class="card-body"><div class="addbar"><input id="asg" placeholder="Describe the task…" onkeydown="if(event.key==='Enter')assign()"><input type="date" class="inp" id="asgd" style="max-width:150px;margin:0"><button class="btn-sm bl" onclick="assign()"><i class="ti ti-send"></i> Assign</button></div></div>
+      <div class="card-head"><div class="ch-t"><i class="ti ti-pin"></i> Assign a task to ${esc(selEmp)}</div></div>
+      <div class="card-body"><div class="addbar"><input id="asg" placeholder="Describe the task…" onkeydown="if(event.key==='Enter')assign()"><input type="date" class="inp" id="asgd" style="max-width:150px"><button class="btn-sm" onclick="assign()"><i class="ti ti-send"></i> Assign</button></div></div>
     </div>
+    ${hasKpis?kpiTrendHtml(kpiGroups,sparkData,selEmp):''}
     <div class="card">
       <div class="card-head"><div class="ch-t"><i class="ti ti-calendar-week"></i> Last 7 days — ${esc(selEmp)}</div><label class="tgl"><input type="checkbox" id="pend" onchange="loadTL()"> Pending only</label></div>
       <div class="tl-wrap" id="tlb"></div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-message-2"></i> ${esc(selEmp)} — send feedback</div></div>
+      <div class="card-head"><div class="ch-t"><i class="ti ti-message-2"></i> Send feedback to ${esc(selEmp)}</div></div>
       <div class="card-body"><textarea class="fb-in" id="fbin" placeholder="Write feedback…"></textarea><button class="btn-sm" onclick="sendFb()"><i class="ti ti-send"></i> Send feedback</button></div>
     </div>`;
   document.getElementById('asgd').value=todayStr(); loadTL();
@@ -755,58 +1003,219 @@ function memberResetPass(name){
 /*──────── KRA MANAGER (admin) ────────*/
 async function pKraMgr(){
   const c=$c();
+  // include admin himself in selector
   if(!window._users){const d=await api('teamrange',{from:dateOffset(-6),to:todayStr()});window._users=d.users.filter(u=>!nm(u.name,U.name));}
-  const users=window._users; if(!selEmp&&users[0])selEmp=users[0].name;
-  const kras=await api('kraGet',{name:selEmp});
+  const allUsers=[{name:U.name,role:U.role},...(window._users||[])];
+  if(!selEmp) selEmp=U.name;
+  const [kras, kpis] = await Promise.all([api('kraGet',{name:selEmp}), api('kpiGet',{name:selEmp})]);
+  // group kpis by kra
+  const kpiMap={};
+  (kpis||[]).forEach(k=>{ if(!kpiMap[k.kra])kpiMap[k.kra]=[]; kpiMap[k.kra].push(k); });
   c.innerHTML=`
-    <div class="people">${users.map(u=>`<button class="pchip ${nm(u.name,selEmp)?'on':''}" onclick="selEmp='${esc(u.name)}';pKraMgr()"><span class="pa">${initials(u.name)}</span>${esc(u.name)}</button>`).join('')}</div>
+    <div class="people">${allUsers.map(u=>`<button class="pchip ${nm(u.name,selEmp)?'on':''}" onclick="selEmp='${esc(u.name)}';pKraMgr()"><span class="pa">${initials(u.name)}</span>${esc(u.name)}${nm(u.name,U.name)?' (me)':''}</button>`).join('')}</div>
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-adjustments"></i> ${esc(selEmp)} — KRA / KPI</div><span class="ch-b">${kras.length} items</span></div>
+      <div class="card-head"><div class="ch-t"><i class="ti ti-adjustments"></i> ${esc(selEmp)} — KRAs &amp; KPIs</div><span class="ch-b">${kras.length} KRAs</span></div>
       <div class="card-body">
-        <div id="krows">${kras.map((k,i)=>`<div class="krow"><i class="ti ti-target" style="color:var(--g)"></i><input value="${esc(k)}" data-i="${i}"><button class="kdel" onclick="this.parentElement.remove()"><i class="ti ti-trash"></i></button></div>`).join('')||'<div class="empty">No KRAs yet — add below</div>'}</div>
-        <div class="addbar" style="margin-top:11px"><input id="knew" placeholder="Write a new KRA / KPI…" onkeydown="if(event.key==='Enter')kraAddRow()"><button class="btn-out" onclick="kraAddRow()"><i class="ti ti-plus"></i> Add</button></div>
-        <div style="margin-top:13px;display:flex;gap:8px;align-items:center">
-          <button class="btn-sm" onclick="kraSave()"><i class="ti ti-device-floppy"></i> Save changes</button>
-          <span style="font-size:11px;color:var(--mut)">AI checks tasks against these KRAs — new checks use them as soon as you save.</span>
+        <div style="font-size:11.5px;color:var(--mut);margin-bottom:12px">Add KRAs below, then expand each KRA to add its KPIs (the daily numbers to track).</div>
+        <div id="krows">
+          ${kras.length?kras.map((k,i)=>{
+            const myKpis=kpiMap[k]||[];
+            return `<div class="kra-expand-wrap" id="kew-${i}">
+              <div class="krow" style="align-items:center">
+                <i class="ti ti-target" style="color:var(--brd);font-size:15px;flex-shrink:0"></i>
+                <input value="${esc(k)}" data-i="${i}" style="flex:1">
+                <button class="btn-out" style="padding:6px 10px;white-space:nowrap" onclick="toggleKpiRows(${i})">
+                  <i class="ti ti-chart-bar"></i> KPIs <span class="nbadge nb-g" style="${myKpis.length?'':'display:none'}">${myKpis.length}</span>
+                </button>
+                <button class="kdel" onclick="document.getElementById('kew-${i}').remove()"><i class="ti ti-trash"></i></button>
+              </div>
+              <div class="kpi-sub" id="ksub-${i}" style="display:none;margin:0 0 8px 26px;background:#fafbf8;border:1px solid var(--line2);border-radius:10px;padding:10px">
+                <div style="font-size:10.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">KPIs for "${esc(k)}"</div>
+                <div id="kprows-${i}">
+                  ${myKpis.map((p,j)=>`<div class="krow kpi-r" style="gap:7px;margin-bottom:5px" data-kra="${esc(k)}">
+                    <input class="kp-label" placeholder="KPI name" value="${esc(p.label)}" style="flex:2">
+                    <input class="kp-unit" placeholder="unit" value="${esc(p.unit)}" style="flex:1;max-width:90px">
+                    <input class="kp-target" type="number" placeholder="target" value="${p.target||''}" style="flex:0 0 70px">
+                    <button class="kdel" onclick="this.parentElement.remove()"><i class="ti ti-trash"></i></button>
+                  </div>`).join('')}
+                </div>
+                <button class="btn-out" style="font-size:11.5px;padding:5px 10px;margin-top:4px" onclick="addKpiRow(${i},'${esc(k)}')"><i class="ti ti-plus"></i> Add KPI</button>
+              </div>
+            </div>`;
+          }).join(''):'<div class="empty">No KRAs yet — add below</div>'}
+        </div>
+        <div class="addbar" style="margin-top:11px">
+          <input id="knew" placeholder="New KRA (e.g. Site visits)…" onkeydown="if(event.key==='Enter')kraAddRow()">
+          <button class="btn-out" onclick="kraAddRow()"><i class="ti ti-plus"></i> Add KRA</button>
+        </div>
+        <div style="margin-top:13px;display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+          <button class="btn-sm" onclick="kraSaveAll()"><i class="ti ti-device-floppy"></i> Save all</button>
+          <span style="font-size:11px;color:var(--mut)">Saves KRAs + all KPIs together. AI uses these KRAs to check task alignment.</span>
         </div>
       </div>
     </div>`;
 }
+function toggleKpiRows(i){
+  const sub=document.getElementById('ksub-'+i);
+  sub.style.display=sub.style.display==='none'?'block':'none';
+}
+function addKpiRow(i,kra){
+  const wrap=document.getElementById('kprows-'+i);
+  wrap.insertAdjacentHTML('beforeend',`<div class="krow kpi-r" style="gap:7px;margin-bottom:5px" data-kra="${esc(kra)}">
+    <input class="kp-label" placeholder="KPI name (e.g. Calls made)" style="flex:2">
+    <input class="kp-unit" placeholder="unit (e.g. calls)" style="flex:1;max-width:90px">
+    <input class="kp-target" type="number" placeholder="target" style="flex:0 0 70px">
+    <button class="kdel" onclick="this.parentElement.remove()"><i class="ti ti-trash"></i></button>
+  </div>`);
+  document.getElementById('ksub-'+i).style.display='block';
+}
 function kraAddRow(){
-  const i=document.getElementById('knew'); const v=i.value.trim(); if(!v)return; i.value='';
+  const inp=document.getElementById('knew'); const v=inp.value.trim(); if(!v)return; inp.value='';
   const wrap=document.getElementById('krows');
   if(wrap.querySelector('.empty'))wrap.innerHTML='';
-  wrap.insertAdjacentHTML('beforeend',`<div class="krow"><i class="ti ti-target" style="color:var(--g)"></i><input value="${esc(v)}"><button class="kdel" onclick="this.parentElement.remove()"><i class="ti ti-trash"></i></button></div>`);
+  const i=Date.now();
+  wrap.insertAdjacentHTML('beforeend',`<div class="kra-expand-wrap" id="kew-${i}">
+    <div class="krow" style="align-items:center">
+      <i class="ti ti-target" style="color:var(--brd);font-size:15px;flex-shrink:0"></i>
+      <input value="${esc(v)}" style="flex:1">
+      <button class="btn-out" style="padding:6px 10px;white-space:nowrap" onclick="toggleKpiRows(${i})"><i class="ti ti-chart-bar"></i> KPIs</button>
+      <button class="kdel" onclick="document.getElementById('kew-${i}').remove()"><i class="ti ti-trash"></i></button>
+    </div>
+    <div class="kpi-sub" id="ksub-${i}" style="display:none;margin:0 0 8px 26px;background:#fafbf8;border:1px solid var(--line2);border-radius:10px;padding:10px">
+      <div style="font-size:10.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">KPIs for "${esc(v)}"</div>
+      <div id="kprows-${i}"></div>
+      <button class="btn-out" style="font-size:11.5px;padding:5px 10px;margin-top:4px" onclick="addKpiRow(${i},'${esc(v)}')"><i class="ti ti-plus"></i> Add KPI</button>
+    </div>
+  </div>`);
 }
-async function kraSave(){
-  const kras=[...document.querySelectorAll('#krows .krow input')].map(x=>x.value.trim()).filter(Boolean);
-  await api('kraSet',{name:selEmp,kras});
-  if(nm(selEmp,U.name))U.kras=kras;
-  toast('✅ '+selEmp+' — KRAs saved'); pKraMgr();
+async function kraSaveAll(){
+  // collect KRAs
+  const kras=[...document.querySelectorAll('#krows .krow input[data-i], #krows .krow input:not(.kp-label):not(.kp-unit):not(.kp-target)')].map(x=>x.value.trim()).filter(Boolean);
+  // collect KPIs per KRA
+  const kpis=[];
+  document.querySelectorAll('.kra-expand-wrap').forEach(wrap=>{
+    const kraInp=wrap.querySelector('.krow input');
+    const kra=kraInp?kraInp.value.trim():'';
+    if(!kra)return;
+    wrap.querySelectorAll('.kpi-r').forEach(row=>{
+      const label=row.querySelector('.kp-label').value.trim();
+      const unit=row.querySelector('.kp-unit').value.trim()||'count';
+      const target=+row.querySelector('.kp-target').value||0;
+      if(label) kpis.push({kra,label,unit,target});
+    });
+  });
+  await Promise.all([
+    api('kraSet',{name:selEmp,kras}),
+    api('kpiSet',{name:selEmp,kpis})
+  ]);
+  if(nm(selEmp,U.name)){U.kras=kras;}
+  toast('✅ KRAs & KPIs saved for '+selEmp); pKraMgr();
 }
 async function assign(){const v=document.getElementById('asg').value.trim();if(!v){toast('Please describe the task');return;}const date=document.getElementById('asgd').value||todayStr();document.getElementById('asg').value='';await api('assign',{name:selEmp,task:v,by:U.name,date});toast('📌 '+selEmp+' — task assigned');loadTL();refreshBadges();}
 async function sendFb(){const v=document.getElementById('fbin').value.trim();if(!v){toast('Please write feedback first');return;}await api('feedback',{date:todayStr(),name:selEmp,by:U.name,feedback:v});document.getElementById('fbin').value='';toast('💬 Feedback sent');}
 
+function kpiTrendHtml(groups,sparkData,name){
+  let html='<div class="card"><div class="card-head"><div class="ch-t"><i class="ti ti-chart-bar"></i> KPI Trend — '+esc(name)+' (last 7 days)</div></div><div class="card-body" style="padding-top:6px">';
+  Object.keys(groups).forEach(function(kra){
+    html+='<div style="font-size:11px;font-weight:700;color:var(--brd);text-transform:uppercase;letter-spacing:.06em;padding:10px 0 6px">'+esc(kra)+'</div>';
+    groups[kra].forEach(function(k){
+      const vals=sparkData[k.label]||[];
+      const latest=vals.length?vals[vals.length-1]:null;
+      const max=Math.max.apply(null,vals.concat([k.target||1,1]));
+      const ok=latest!==null&&+latest>=(k.target||0);
+      let bars=vals.length?vals.map(function(v){return '<div class="spark-bar" style="height:'+Math.round((+v/max)*24)+'px;background:'+(+v>=(k.target||0)?'#22c55e':'#f97316')+'"></div>';}).join(''):'<span style="font-size:10px;color:var(--mut)">No data yet</span>';
+      let latestHtml=latest!==null?'<span class="spark-val" style="color:'+(ok?'#15803d':'#c2460a')+'">'+latest+'</span>':'<span class="spark-val" style="color:var(--mut)">—</span>';
+      html+='<div class="kpi-row-item" style="border-radius:10px;margin-bottom:6px;background:#FAFBF8"><span class="kpi-label" style="font-weight:600">'+esc(k.label)+'</span><span class="kpi-unit">'+esc(k.unit)+'</span><span class="kpi-target">Target: '+(k.target||'—')+'</span><div class="spark-wrap"><div class="spark">'+bars+'</div>'+latestHtml+'</div></div>';
+    });
+  });
+  html+='</div></div>';
+  return html;
+}
+
 /*──────── BUCKET ────────*/
+let bktFilter='all'; // 'all' or employee name
 async function pBucket(){
   const c=$c();
   if(!window._users){const d=await api('teamrange',{from:dateOffset(-6),to:todayStr()});window._users=d.users.filter(u=>!nm(u.name,U.name));}
-  const users=window._users; const list=await api('bucketList',{});
+  const users=window._users;
+  const list=await api('bucketList',{});
+  // apply filter
+  const filtered=bktFilter==='all'?list:list.filter(b=>nm(b.For,bktFilter));
+  const counts={}; list.forEach(b=>{counts[b.For]=(counts[b.For]||0)+1;});
   c.innerHTML=`
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-inbox"></i> Collect upcoming tasks</div><span class="ch-b">GTD Bucket</span></div>
-      <div class="card-body">
-        <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">Park tasks you don't want to assign yet but must not forget. Assign them with one click when the time comes.</div>
-        <div class="addbar"><input id="bkt" placeholder="Describe the task…" onkeydown="if(event.key==='Enter')bucketAdd()"><select class="inp" id="bfor" style="max-width:150px;margin:0">${users.map(u=>`<option>${esc(u.name)}</option>`).join('')}</select><button class="btn-sm" onclick="bucketAdd()"><i class="ti ti-plus"></i> Add</button></div>
+      <div class="card-head"><div class="ch-t"><i class="ti ti-user-pin"></i> Filter by employee</div><span class="ch-b">${list.length} total</span></div>
+      <div class="card-body" style="padding-top:8px">
+        <div class="people" style="padding-bottom:0">
+          <button class="pchip ${bktFilter==='all'?'on':''}" onclick="bktFilter='all';pBucket()">
+            <span class="pa" style="background:var(--br)">All</span>All <span class="nbadge nb-g" style="display:${list.length?'':'none'}">${list.length}</span>
+          </button>
+          ${users.map(u=>`<button class="pchip ${bktFilter===u.name?'on':''}" onclick="bktFilter='${esc(u.name)}';pBucket()">
+            <span class="pa">${initials(u.name)}</span>${esc(u.name)}${counts[u.name]?` <span class="nbadge nb-o">${counts[u.name]}</span>`:''}
+          </button>`).join('')}
+        </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="ch-t"><i class="ti ti-list-details"></i> Bucket</div><span class="ch-b">${list.length} items</span></div>
-      <div class="card-body">${list.length?list.map(b=>`<div class="team-item"><div class="t-av" style="background:linear-gradient(135deg,#7c3aed,#1677ff)">${initials(b.For)}</div><div style="flex:1"><div class="t-name">${esc(b.Task)}</div><div class="t-role-t">For ${esc(b.For)}</div></div><button class="btn-sm bl" onclick="bucketAssign('${b.id}')"><i class="ti ti-send"></i> Assign now</button></div>`).join(''):'<div class="empty">The bucket is empty.</div>'}</div>
+      <div class="card-head"><div class="ch-t"><i class="ti ti-inbox"></i> Add to bucket</div></div>
+      <div class="card-body">
+        <div class="addbar" style="flex-wrap:wrap;gap:8px">
+          <input id="bkt" placeholder="Describe the task…" style="flex:1;min-width:200px" onkeydown="if(event.key==='Enter')bucketAdd()">
+          <select class="inp" id="bfor" style="max-width:160px;margin:0">${users.map(u=>`<option ${nm(u.name,bktFilter)&&bktFilter!=='all'?'selected':''}>${esc(u.name)}</option>`).join('')}</select>
+          <button class="btn-sm" onclick="bucketAdd()"><i class="ti ti-plus"></i> Add</button>
+        </div>
+        <div style="font-size:11px;color:var(--mut);margin-top:8px">Park tasks you don't want to assign yet. Assign with one click when ready.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-t"><i class="ti ti-list-details"></i> ${bktFilter==='all'?'All tasks':'Tasks for '+bktFilter}</div>
+        <span class="ch-b">${filtered.length} item${filtered.length!==1?'s':''}</span>
+      </div>
+      <div class="card-body">
+        ${filtered.length?filtered.map(b=>`
+          <div class="team-item" id="bi-${b.id}">
+            <div class="t-av" style="background:linear-gradient(135deg,#7c3aed,#1677ff)">${initials(b.For)}</div>
+            <div style="flex:1;min-width:0">
+              <div class="t-name" id="btxt-${b.id}">${esc(b.Task)}</div>
+              <div class="t-role-t">For ${esc(b.For)}</div>
+            </div>
+            <button class="btn-out" style="padding:6px 9px" title="Edit task" onclick="bucketEdit('${b.id}','${esc(b.Task).replace(/'/g,"\\'")}')"><i class="ti ti-pencil"></i></button>
+            <button class="btn-out" style="padding:6px 9px;color:var(--r)" title="Delete" onclick="bucketDelete('${b.id}')"><i class="ti ti-trash"></i></button>
+            <button class="btn-sm" onclick="bucketAssign('${b.id}')"><i class="ti ti-send"></i> Assign</button>
+          </div>`).join('')
+        :'<div class="empty">'+(bktFilter==='all'?'Bucket is empty.':'No tasks for '+bktFilter+' in bucket.')+'</div>'}
+      </div>
     </div>`;
 }
-async function bucketAdd(){const v=document.getElementById('bkt').value.trim();if(!v){toast('Please describe the task');return;}const f=document.getElementById('bfor').value;document.getElementById('bkt').value='';await api('bucketAdd',{task:v,for:f,by:U.name});toast('📥 Added to bucket');pBucket();refreshBadges();}
-async function bucketAssign(id){await api('bucketAssign',{id,date:todayStr(),by:U.name});toast('✅ Task assigned');pBucket();refreshBadges();}
+async function bucketAdd(){
+  const v=document.getElementById('bkt').value.trim();
+  if(!v){toast('Please describe the task');return;}
+  const f=document.getElementById('bfor').value;
+  document.getElementById('bkt').value='';
+  await api('bucketAdd',{task:v,for:f,by:U.name});
+  toast('📥 Added to bucket'); pBucket(); refreshBadges();
+}
+function bucketEdit(id,current){
+  const nv=prompt('Edit task:',current); if(nv===null||!nv.trim())return;
+  api('bucketEdit',{id,task:nv.trim()}).then(()=>{
+    const el=document.getElementById('btxt-'+id);
+    if(el)el.textContent=nv.trim(); else pBucket();
+    toast('✅ Task updated');
+  });
+}
+function bucketDelete(id){
+  if(!confirm('Remove this task from the bucket?'))return;
+  api('bucketDelete',{id}).then(()=>{
+    const el=document.getElementById('bi-'+id);
+    if(el)el.remove(); else pBucket();
+    toast('🗑️ Task removed'); refreshBadges();
+  });
+}
+async function bucketAssign(id){
+  await api('bucketAssign',{id,date:todayStr(),by:U.name});
+  toast('✅ Task assigned'); pBucket(); refreshBadges();
+}
 
 /*──────── AI ANALYSIS ────────*/
 async function pAI(){
@@ -902,17 +1311,113 @@ const D={
     {Name:'Rupesh',Role:'Operations',Password:'1234'}
   ],
   kraByUser:{
-    Krishan:['Team performance review','Targets monitoring','Business growth'],
-    Raghavendra:['Site visits','Visit-to-booking conversion','Customer follow-up'],
-    Sunil:['Field visits & retailer network','Lead generation on ground','Site visit coordination'],
-    Kamna:['80+ calls daily','Handover hot leads','Update CRM follow-ups'],
-    Anjali:['80+ calls daily','Handover hot leads','Update CRM follow-ups'],
-    Shafaq:['Daily social posts/reels','Lead generation via ads','Enquiry tracking'],
-    Luv:['Portal & tools uptime','Automation delivery','Data hygiene'],
-    Leeladhar:['Record collections','Pending payment follow-up','Day-closing summary'],
-    Aditi:['Training sessions delivery','Module completion tracking','New agent onboarding'],
-    Rupesh:['Registry & paperwork follow-up','Vendor coordination','Site operations']
+    Krishan:[
+      'Team performance review',
+      'Targets monitoring',
+      'Business growth'
+    ],
+    Raghavendra:[
+      'Site visits',
+      'Visit-to-booking conversion',
+      'Customer follow-up'
+    ],
+    Sunil:[
+      'Field visits & retailer network',
+      'Lead generation on ground',
+      'Site visit coordination'
+    ],
+    Kamna:[
+      '80+ calls daily',
+      'Handover hot leads',
+      'Update CRM follow-ups'
+    ],
+    Anjali:[
+      '80+ calls daily',
+      'Handover hot leads',
+      'Update CRM follow-ups'
+    ],
+    Shafaq:[
+      'Daily social posts/reels',
+      'Lead generation via ads',
+      'Enquiry tracking'
+    ],
+    Luv:[
+      'Portal & tools uptime',
+      'Automation delivery',
+      'Data hygiene'
+    ],
+    Leeladhar:[
+      'Record collections',
+      'Pending payment follow-up',
+      'Day-closing summary'
+    ],
+    Aditi:[
+      'Training sessions delivery',
+      'Module completion tracking',
+      'New agent onboarding'
+    ],
+    Rupesh:[
+      'Registry & paperwork follow-up',
+      'Vendor coordination',
+      'Site operations'
+    ]
   },
+  // kpiByUser: { Name: [ {kra, label, unit, target}, ... ] }
+  kpiByUser:{
+    Krishan:[
+      {kra:'Team performance review', label:'Team meetings held',   unit:'meetings', target:2},
+      {kra:'Team performance review', label:'Feedbacks given',      unit:'feedback',  target:5},
+      {kra:'Targets monitoring',      label:'Reports reviewed',     unit:'reports',   target:10},
+      {kra:'Business growth',         label:'New initiatives taken',unit:'items',     target:1}
+    ],
+    Raghavendra:[
+      {kra:'Site visits',                   label:'Site visits done',   unit:'visits',  target:2},
+      {kra:'Visit-to-booking conversion',   label:'Bookings closed',    unit:'bookings',target:1},
+      {kra:'Customer follow-up',            label:'Follow-up calls',    unit:'calls',   target:10}
+    ],
+    Kamna:[
+      {kra:'80+ calls daily',        label:'Number of calls',       unit:'calls',   target:80},
+      {kra:'Handover hot leads',     label:'Hot leads converted',   unit:'leads',   target:5},
+      {kra:'Update CRM follow-ups',  label:'Follow-ups updated',    unit:'entries', target:20}
+    ],
+    Anjali:[
+      {kra:'80+ calls daily',        label:'Number of calls',       unit:'calls',   target:80},
+      {kra:'Handover hot leads',     label:'Hot leads converted',   unit:'leads',   target:3},
+      {kra:'Update CRM follow-ups',  label:'Follow-ups updated',    unit:'entries', target:15}
+    ],
+    Shafaq:[
+      {kra:'Daily social posts/reels',  label:'Posts/reels published', unit:'posts',    target:3},
+      {kra:'Lead generation via ads',   label:'Ad enquiries received', unit:'enquiries',target:10},
+      {kra:'Enquiry tracking',          label:'Enquiries responded',   unit:'responses',target:10}
+    ],
+    Sunil:[
+      {kra:'Field visits & retailer network', label:'Shop visits done',   unit:'visits', target:5},
+      {kra:'Lead generation on ground',       label:'Forms collected',    unit:'forms',  target:3},
+      {kra:'Site visit coordination',         label:'Site visits arranged',unit:'visits',target:2}
+    ],
+    Leeladhar:[
+      {kra:'Record collections',         label:'Receipts recorded',   unit:'receipts',  target:5},
+      {kra:'Pending payment follow-up',  label:'Payments followed up',unit:'follow-ups',target:3},
+      {kra:'Day-closing summary',        label:'Closing done',        unit:'yes/no',    target:1}
+    ],
+    Aditi:[
+      {kra:'Training sessions delivery', label:'Sessions conducted',  unit:'sessions',target:1},
+      {kra:'Module completion tracking', label:'Modules completed',   unit:'modules', target:1},
+      {kra:'New agent onboarding',       label:'Agents onboarded',    unit:'agents',  target:1}
+    ],
+    Rupesh:[
+      {kra:'Registry & paperwork follow-up',label:'Registry follow-ups done',unit:'follow-ups',target:2},
+      {kra:'Vendor coordination',           label:'Vendor calls made',       unit:'calls',     target:3},
+      {kra:'Site operations',               label:'Site issues resolved',    unit:'issues',    target:2}
+    ],
+    Luv:[
+      {kra:'Portal & tools uptime',  label:'Issues resolved',   unit:'issues',  target:2},
+      {kra:'Automation delivery',    label:'Tasks automated',   unit:'tasks',   target:1},
+      {kra:'Data hygiene',           label:'Data errors fixed', unit:'fixes',   target:3}
+    ]
+  },
+  // kpiLog: { 'Name|Date': { kpiLabel: value } }
+  kpiLog:{},
   tasks:[],feedback:[],bucket:[],midday:{}
 };
 (function seed(){
@@ -932,17 +1437,146 @@ const D={
     D.tasks.push({TaskID:name+i,Date:day,Name:name,Role:roleOf(name),Task:x[0],Type:x[6],AssignedBy:x[7],Status:x[1],Report:x[8]||'',NextAction:x[9]||'',NextDate:x[10]||'',Aligned:x[2],Score:x[3],MatchedKRA:x[4]});});});
   D.feedback.push({Date:todayStr(),Name:'Raghavendra',By:'Krishan',Feedback:'Focus on conversion — visits are good, bookings are low.'});
   D.bucket.push({id:'b1',Task:'Plan the Diwali scheme',For:'Shafaq',By:'Krishan'});
+  // Seed KPI log for last 3 days
+  const kpiSeed={
+    Kamna:[
+      {label:'Number of calls',v:[85,78,92]},
+      {label:'Hot leads converted',v:[6,4,7]},
+      {label:'Follow-ups updated',v:[40,35,48]}
+    ],
+    Raghavendra:[
+      {label:'Site visits done',v:[2,1,3]},
+      {label:'Bookings closed',v:[0,1,0]},
+      {label:'Follow-up calls',v:[8,6,12]}
+    ],
+    Krishan:[
+      {label:'Team meetings held',v:[2,1,3]},
+      {label:'Feedbacks given',v:[4,3,7]},
+      {label:'Reports reviewed',v:[8,5,10]}
+    ],
+    Shafaq:[
+      {label:'Posts/reels published',v:[3,2,4]},
+      {label:'Ad enquiries received',v:[11,8,15]},
+      {label:'Enquiries responded',v:[9,7,14]}
+    ]
+  };
+  Object.keys(kpiSeed).forEach(name=>{
+    kpiSeed[name].forEach(k=>{
+      k.v.forEach((val,i)=>{
+        const key=name+'|'+dateOffset(-i);
+        if(!D.kpiLog[key]) D.kpiLog[key]={};
+        D.kpiLog[key][k.label]=val;
+      });
+    });
+  });
   function roleOf(n){const u=D.users.find(x=>x.Name===n);return u?u.Role:'';}
 })();
 document.getElementById('lnote').innerHTML=DEMO?'Demo: sign in as <b>Krishan / 1234</b> (admin — all modules) or Raghavendra / Kamna / Shafaq / Leeladhar, password 1234.':'';
+/* Feature 5: Drag-to-reorder tasks */
+function enableDrag(){
+  const list=document.getElementById('tlist'); if(!list) return;
+  let dragged=null;
+  list.querySelectorAll('.task-wrap').forEach(function(el){
+    el.setAttribute('draggable','true');
+    el.addEventListener('dragstart',function(){dragged=el;setTimeout(function(){el.classList.add('dragging');},0);});
+    el.addEventListener('dragend',function(){el.classList.remove('dragging');list.querySelectorAll('.task-wrap').forEach(function(x){x.classList.remove('drag-over');});dragged=null;});
+    el.addEventListener('dragover',function(e){e.preventDefault();if(el!==dragged){list.querySelectorAll('.task-wrap').forEach(function(x){x.classList.remove('drag-over');});el.classList.add('drag-over');}});
+    el.addEventListener('drop',function(e){e.preventDefault();el.classList.remove('drag-over');if(dragged&&el!==dragged){list.insertBefore(dragged,el);}});
+  });
+}
+/* Feature 7: PWA install prompt */
+let pwaPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();pwaPrompt=e;showPwaBanner();});
+function showPwaBanner(){
+  if(localStorage.getItem('pwaDismissed'))return;
+  const b=document.getElementById('pwaBanner');if(b)b.style.display='flex';
+}
+function installPwa(){if(pwaPrompt){pwaPrompt.prompt();pwaPrompt.userChoice.then(function(r){if(r.outcome==='accepted')localStorage.setItem('pwaDismissed','1');hidePwaBanner();});}}
+function hidePwaBanner(){const b=document.getElementById('pwaBanner');if(b)b.style.display='none';localStorage.setItem('pwaDismissed','1');}
+/* Feature 9: Stagnation detector — same task pending 3+ days */
+function detectStagnation(allTasks){
+  const counts={};
+  allTasks.forEach(function(t){
+    if(t.Status!=='done'){
+      const key=t.Task.toLowerCase().slice(0,30);
+      counts[key]=(counts[key]||[]);
+      counts[key].push(t.Date);
+    }
+  });
+  const stag=[];
+  Object.keys(counts).forEach(function(k){
+    if(counts[k].length>=3){
+      // find oldest
+      const oldest=counts[k].sort()[0];
+      const days=Math.round((new Date(todayStr())-new Date(oldest))/(86400000));
+      if(days>=3) stag.push({task:k,days:days,count:counts[k].length});
+    }
+  });
+  return stag;
+}
+function stagBanner(stag){
+  if(!stag.length) return '';
+  return '<div class="stag-flag"><i class="ti ti-alert-triangle"></i><div><b>'+stag.length+' task(s) stuck for 3+ days</b> — '+stag.slice(0,2).map(function(s){return '"'+esc(s.task.slice(0,25))+'…" ('+s.days+' days)'}).join(', ')+'. Review &amp; escalate.</div></div>';
+}
+/* Feature 10: Monthly KPI progress — accumulated daily entries vs monthly target */
+async function pKpiProgress(){
+  const c=$c(); c.innerHTML='<div class="empty">Loading…</div>';
+  const [kpis, monthLog] = await Promise.all([
+    api('kpiGet',{name:U.name}),
+    api('kpiLogGet',{name:U.name,days:30})
+  ]);
+  if(!kpis||!kpis.length){c.innerHTML='<div class="empty">No KPIs set — go to KRA Manager to add KPIs.</div>';return;}
+  const totals={};
+  monthLog.forEach(function(d){Object.keys(d.values||{}).forEach(function(lbl){totals[lbl]=(totals[lbl]||0)+(+d.values[lbl]||0);});});
+  const now=new Date(); const daysInMonth=new Date(now.getFullYear(),now.getMonth()+1,0).getDate(); const daysPassed=now.getDate();
+  let html='<div class="card"><div class="card-head"><div class="ch-t"><i class="ti ti-target"></i> Monthly KPI Progress</div><span class="ch-b">Day '+daysPassed+' of '+daysInMonth+'</span></div><div class="card-body">';
+  kpis.forEach(function(k){
+    const actual=totals[k.label]||0;
+    const monthlyTarget=(k.target||0)*daysInMonth;
+    const pct=monthlyTarget>0?Math.min(100,Math.round(actual/monthlyTarget*100)):0;
+    const ok=monthlyTarget>0?actual>=(k.target||0)*daysPassed:actual>0;
+    const pace=monthlyTarget>0?Math.round((k.target||0)*daysPassed):0;
+    html+='<div class="mkpi-card">'+
+      '<div class="mkpi-hd"><span class="mkpi-lbl">'+esc(k.label)+'</span><span class="mkpi-pct" style="color:'+(ok?'#15803d':'#c2460a')+'">'+actual+' / '+monthlyTarget+' '+esc(k.unit)+'</span></div>'+
+      '<div class="mkpi-bar"><div class="mkpi-fill" style="width:'+pct+'%;background:'+(ok?'#22c55e':'#f97316')+'"></div></div>'+
+      '<div class="mkpi-foot">'+pct+'% of monthly target · Pace: '+pace+' expected so far</div>'+
+    '</div>';
+  });
+  html+='</div></div>';
+  c.innerHTML=html;
+}
 function demoApi(a,d){return new Promise(r=>setTimeout(()=>r(demoHandle(a,d)),a==='align'?450:110));}
 function inR(x,f,t){return x>=f&&x<=t;}
 function demoHandle(a,d){
   if(a==='login'){const u=D.users.find(x=>nm(x.Name,d.name)&&x.Password===d.password);if(!u)throw new Error('Incorrect name or password');return{name:u.Name,role:u.Role,kras:(D.kraByUser[u.Name]||[]).slice()};}
-  if(a==='myday')return{tasks:D.tasks.filter(t=>t.Date===d.date&&nm(t.Name,d.name)),feedback:D.feedback.filter(f=>nm(f.Name,d.name)),midday:D.midday[d.name+'|'+d.date]||''};
+  if(a==='myday'){
+    const todayTasks=D.tasks.filter(t=>t.Date===d.date&&nm(t.Name,d.name));
+    // carry-forward: pending tasks from past with NextDate = today
+    const carried=D.tasks.filter(t=>
+      nm(t.Name,d.name) &&
+      t.Date!==d.date &&
+      t.Status!=='done' &&
+      t.NextDate===d.date &&
+      !todayTasks.some(tt=>tt.Task===t.Task) // not already added today
+    ).map(t=>Object.assign({},t,{_carried:true,_fromDate:t.Date}));
+    return{tasks:[...todayTasks,...carried],feedback:D.feedback.filter(f=>nm(f.Name,d.name)),midday:D.midday[d.name+'|'+d.date]||''};
+  }
   if(a==='midday'){D.midday[d.name+'|'+d.date]=d.note;return{ok:1};}
   if(a==='kraGet')return (D.kraByUser[d.name]||[]).slice();
   if(a==='kraSet'){D.kraByUser[d.name]=d.kras.slice();return{ok:1};}
+  if(a==='kpiGet')return (D.kpiByUser[d.name]||[]).slice();
+  if(a==='kpiSet'){D.kpiByUser[d.name]=d.kpis;return{ok:1};}
+  if(a==='kpiLog'){
+    const key=d.name+'|'+d.date;
+    if(!D.kpiLog[key]) D.kpiLog[key]={};
+    Object.assign(D.kpiLog[key], d.values);
+    return {ok:1};
+  }
+  if(a==='kpiLogGet'){
+    // return array of {date, values:{label:val}} for last N days
+    const days=[]; for(let i=0;i<(d.days||7);i++) days.push(dateOffset(-i));
+    return days.map(date=>({date, values:D.kpiLog[d.name+'|'+date]||{}}));
+  }
   if(a==='addtask'){const t={TaskID:'n'+Date.now(),Date:d.date,Name:d.name,Role:d.role,Task:d.task,Type:'listed',AssignedBy:'',Status:'open',Report:'',NextAction:'',NextDate:'',Aligned:'',Score:'',MatchedKRA:''};D.tasks.push(t);return t;}
   if(a==='assign'){const u=D.users.find(x=>nm(x.Name,d.name));const t={TaskID:'a'+Date.now(),Date:d.date,Name:d.name,Role:u?u.Role:'',Task:d.task,Type:'assigned',AssignedBy:d.by,Status:'open',Report:'',NextAction:'',NextDate:'',Aligned:'',Score:'',MatchedKRA:''};D.tasks.push(t);return t;}
   if(a==='eod'){const t=D.tasks.find(x=>x.TaskID===d.taskId);if(t){t.Report=d.report;t.Status=d.status;t.NextAction=d.nextAction||'';t.NextDate=d.nextDate||'';}return{ok:1};}
@@ -956,6 +1590,8 @@ function demoHandle(a,d){
   if(a==='userUpdate'){const u=D.users.find(x=>nm(x.Name,d.name));if(!u)throw new Error('Member not found');if(d.role)u.Role=d.role;if(d.phone!==undefined)u.Phone=d.phone;if(d.password)u.Password=d.password;return{ok:1};}
   if(a==='bucketList')return D.bucket.slice();
   if(a==='bucketAdd'){D.bucket.push({id:'b'+Date.now(),Task:d.task,For:d.for,By:d.by});return{ok:1};}
+  if(a==='bucketEdit'){const b=D.bucket.find(x=>String(x.id)===String(d.id));if(b)b.Task=d.task;return{ok:1};}
+  if(a==='bucketDelete'){const i=D.bucket.findIndex(x=>String(x.id)===String(d.id));if(i>=0)D.bucket.splice(i,1);return{ok:1};}
   if(a==='bucketAssign'){const i=D.bucket.findIndex(x=>x.id===d.id);if(i>=0){const b=D.bucket[i];const u=D.users.find(x=>nm(x.Name,b.For));D.tasks.push({TaskID:'a'+Date.now(),Date:d.date,Name:b.For,Role:u?u.Role:'',Task:b.Task,Type:'assigned',AssignedBy:d.by,Status:'open',Report:'',NextAction:'',NextDate:'',Aligned:'',Score:'',MatchedKRA:''});D.bucket.splice(i,1);}return{ok:1};}
   throw new Error('demo: unknown '+a);
 }
