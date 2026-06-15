@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#00b96b">
+<meta name="theme-color" content="#E06318">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AA Tasks">
+<meta name="application-name" content="AA Tasks">
+<link rel="manifest" href="manifest.json">
 <title>Akshardham — Operations Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css">
@@ -372,7 +378,7 @@ table.tl tr.done td{color:var(--mut2)}
 </div>
 
 <script>
-const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbxm5jWK0_rEoad9s-jIHsSsH-f1NquwUxDTXeOC7hstJ54IBgFZIhUoxG5EACWpdNaFzw/exec'};
+const CONFIG={API_URL:''};
 const DEMO=!CONFIG.API_URL;
 let U=null,PAGE='',selEmp=''; window._curFeedback=[];
 /* SPEED: batch API — multiple actions in 1 HTTP request to Apps Script */
@@ -1620,6 +1626,16 @@ function demoHandle(a,d){
 }
 function fakeAlign(task,kras){const t=task.toLowerCase();const hits=['call','lead','visit','site','book','customer','follow','post','reel','ad','collection','payment','meeting','target','review','sale','plot','colony','whatsapp','convert','receipt','registry','crm','scheme','layout'];const n=hits.filter(h=>t.includes(h)).length;if(n>=2)return{aligned:true,score:5,kra:kras[0]||''};if(n===1)return{aligned:true,score:3,kra:kras[0]||''};return{aligned:false,score:1,kra:''};}
 /* BACKEND (Luv ji): TASKS sheet me columns Type|AssignedBy|Report|NextAction|NextDate; USERS sheet me per-user KRA column (ya alag KRA sheet). Actions: assign{name,task,by,date}, eod{taskId,report,status,nextAction,nextDate}, midday{name,date,note}, kraGet{name}, kraSet{name,kras[]}, feedback me taskRef field, bucketList/bucketAdd/bucketAssign; baaki same (login, myday, addtask, toggle, align, myrange, teamrange). Fir CONFIG.API_URL me web-app URL paste karo — demo auto band. */
+</script>
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js')
+      .then(function(r){ console.log('SW registered'); })
+      .catch(function(e){ console.log('SW error', e); });
+  });
+}
 </script>
 </body>
 </html>
