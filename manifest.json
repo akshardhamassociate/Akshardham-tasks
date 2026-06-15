@@ -1,8 +1,8 @@
 {
   "name": "Akshardham Tasks",
   "short_name": "AA Tasks",
-  "description": "Daily task tracking & performance intelligence for Akshardham Associates",
-  "start_url": "./akshardham-ops-v6.html",
+  "description": "Daily task tracking and performance intelligence for Akshardham Associates",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#E06318",
@@ -11,49 +11,49 @@
   "scope": "./",
   "icons": [
     {
-      "src": "icon-72.png",
+      "src": "./icon-72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-96.png",
+      "src": "./icon-96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-128.png",
+      "src": "./icon-128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-144.png",
+      "src": "./icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-152.png",
+      "src": "./icon-152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-384.png",
+      "src": "./icon-384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -63,18 +63,17 @@
     {
       "name": "My Day",
       "short_name": "My Day",
-      "description": "View today's tasks",
-      "url": "./akshardham-ops-v6.html#myday",
-      "icons": [{ "src": "icon-96.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Team Dashboard",
-      "short_name": "Team",
-      "description": "View team performance",
-      "url": "./akshardham-ops-v6.html#teamdash",
-      "icons": [{ "src": "icon-96.png", "sizes": "96x96" }]
+      "url": "./index.html",
+      "icons": [
+        {
+          "src": "./icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
-  "categories": ["business", "productivity"],
-  "screenshots": []
+  "categories": [
+    "business",
+    "productivity"
+  ]
 }
