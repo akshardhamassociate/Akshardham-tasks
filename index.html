@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#E06318">
+<link rel="canonical" href="https://akshardhamassociate.github.io/Akshardham-tasks/">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="AA Tasks">
 <meta name="application-name" content="AA Tasks">
-<link rel="manifest" href="manifest.json">
-<title>Akshardham — Operations Hub</title>
+<link rel="manifest" href="./manifest.json">
+<title>Akshardham Tasks</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css">
 <style>
@@ -1631,7 +1632,7 @@ function fakeAlign(task,kras){const t=task.toLowerCase();const hits=['call','lea
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js')
+    navigator.serviceWorker.register('./sw.js')
       .then(function(r){ console.log('SW registered'); })
       .catch(function(e){ console.log('SW error', e); });
   });
