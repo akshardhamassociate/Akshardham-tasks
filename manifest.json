@@ -2,13 +2,13 @@
   "name": "Akshardham Tasks",
   "short_name": "Akshardham",
   "description": "Daily task tracking and performance intelligence for Akshardham Associates",
-  "start_url": "./index.html",
+  "start_url": "https://akshardhamassociate.github.io/Akshardham-tasks/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#E06318",
   "orientation": "portrait-primary",
   "lang": "en",
-  "scope": "./",
+  "scope": "https://akshardhamassociate.github.io/Akshardham-tasks/",
   "icons": [
     {
       "src": "./icon-72.png",
@@ -76,7 +76,7 @@
     "business",
     "productivity"
   ],
-  "id": "/Akshardham-tasks/",
+  "id": "https://akshardhamassociate.github.io/Akshardham-tasks/",
   "screenshots": [
     {
       "src": "./icon-512.png",
