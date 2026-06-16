@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.akshardhamassociate.twa",
+        "sha256_cert_fingerprints": ["44:4B:07:5A:AE:BD:08:23:8A:51:E1:3D:01:CF:E1:77:DA:84:96:75:53:57:E7:64:26:65:36:D6:65:A3:E6:0F"]
+      }
+    }]
